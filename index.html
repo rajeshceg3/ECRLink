@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon | A Journey on the East Coast Road</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- The entire application is wrapped to handle state changes, like the Sanctuary view. -->
+    <div class="horizon-container">
+
+        <!-- The initial landing experience. A moment of calm. -->
+        <header class="landing-experience">
+            <video autoplay muted loop playsinline class="landing-video" src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5119-large.mp4" poster="placeholder-poster.jpg"></video>
+            <div class="landing-text">
+                <h1>A journey should not be a list.<br>It should be a feeling.</h1>
+            </div>
+        </header>
+
+        <!-- The main journey along the ECR. -->
+        <main class="journey">
+            
+            <!-- The Ribbon. The central, unifying element of the entire experience. -->
+            <div class="ribbon"></div>
+
+            <!-- Each 'attraction' is a section. A stop on the journey. -->
+            <section class="attraction" id="dakshinachitra">
+                <article class="attraction-card">
+                    <div class="card-content">
+                        <figure class="card-image">
+                            <img src="https://i.imgur.com/8a6bE2M.jpg" alt="A traditional house at DakshinaChitra heritage village">
+                        </figure>
+                        <div class="card-title">
+                            <h2>DakshinaChitra</h2>
+                            <p>Where the soul of the South is etched in light and shadow.</p>
+                        </div>
+                    </div>
+                    <div class="sanctuary-content">
+                        <p>The DakshinaChitra ("a picture of the south") is a living museum of art, architecture, and lifestyles. Each structure here is an original, rescued from demolition and reconstructed by master craftsmen. Feel the texture of the polished wood, the coolness of the terracotta tiles. We suggest finding a quiet corner in the Chettinad house and simply observing the intricate play of light through the central courtyard.</p>
+                        <div class="sanctuary-actions">
+                            <!-- Icons are embedded SVG for style control and sharpness -->
+                            <a href="#" class="icon-button" aria-label="Location">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </a>
+                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="attraction" id="cholamandal">
+                <article class="attraction-card">
+                    <div class="card-content">
+                        <figure class="card-image">
+                            <img src="https://i.imgur.com/rS2yO7d.jpg" alt="A bronze sculpture gleaming in soft light at Cholamandal Artists' Village">
+                        </figure>
+                        <div class="card-title">
+                            <h2>Cholamandal Artists' Village</h2>
+                            <p>A conversation in colour and form.</p>
+                        </div>
+                    </div>
+                    <div class="sanctuary-content">
+                        <p>Founded in 1966, this is the largest self-supporting artists' commune in India. It is not merely a gallery, but a cradle of the Madras Movement of Art. The air hums with quiet creation. Observe how the artists use form and material to translate ancient motifs into a modern language. The textures here—from rough canvas to polished bronze—tell their own stories.</p>
+                        <div class="sanctuary-actions">
+                            <a href="#" class="icon-button" aria-label="Location">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </a>
+                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            
+        </main>
+
+        <!-- The close button for the Sanctuary view. It lives outside the flow. -->
+        <button class="sanctuary-close-button" aria-label="Close sanctuary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
