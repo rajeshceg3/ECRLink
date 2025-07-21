@@ -25,13 +25,27 @@ document.addEventListener('DOMContentLoaded', () => {
             root.style.setProperty('--bg-gradient-end', '#3a4a6e');
             root.style.setProperty('--color-text', '#e5e5e5');
             root.style.setProperty('--color-text-serene', '#b0b0b0');
-            root.style.setProperty('--color-ribbon', '#5a6a8e');
+            root.style.setProperty('--color-ribbon', '#98a8ce');
         }
     }
 
     // --- 2. Scroll-based Animations ---
     // Reveals attraction cards as they enter the viewport.
-    // NOTE: For production on a very long page, this should be debounced for performance.
+    function debounce(func, wait = 15, immediate = true) {
+        let timeout;
+        return function() {
+            const context = this, args = arguments;
+            const later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            const callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+
     function handleScroll() {
         const triggerBottom = window.innerHeight / 5 * 4;
 
@@ -52,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             horizonContainer.classList.add('sanctuary-is-open');
             card.classList.add('is-active-sanctuary');
+            document.body.style.overflow = 'hidden';
         });
     });
 
@@ -61,11 +76,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (activeSanctuary) {
             activeSanctuary.classList.remove('is-active-sanctuary');
         }
+        document.body.style.overflow = '';
     });
 
     // --- Initializations ---
     applyTemporalTheme();
-    handleScroll(); // Run once on load to check initial view
-    window.addEventListener('scroll', handleScroll);
+    setTimeout(() => {
+        handleScroll(); // Run once on load to check initial view
+    }, 100);
+    window.addEventListener('scroll', debounce(handleScroll));
 
 });

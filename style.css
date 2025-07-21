@@ -201,10 +201,6 @@ body {
 }
 
 /* --- State Change: When Sanctuary is Open --- */
-.horizon-container.sanctuary-is-open {
-    overflow: hidden; /* Prevent scrolling background */
-}
-
 /* Move the ribbon out of view */
 .horizon-container.sanctuary-is-open .ribbon {
     transform: translateX(-200%);
@@ -214,6 +210,7 @@ body {
 .horizon-container.sanctuary-is-open .attraction-card:not(.is-active-sanctuary) {
     opacity: 0;
     pointer-events: none;
+    display: none;
 }
 
 /* The magic of the Sanctuary transition */
