@@ -232,7 +232,6 @@ body {
 .horizon-container.sanctuary-is-open .attraction-card:not(.is-active-sanctuary) {
     opacity: 0;
     pointer-events: none;
-    display: none;
 }
 
 /* The magic of the Sanctuary transition */
