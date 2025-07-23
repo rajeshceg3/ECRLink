@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reveals attraction cards as they enter the viewport.
     function debounce(func, wait = 15, immediate = true) {
         let timeout;
-        return function() {
-            const context = this, args = arguments;
+        return function(...args) {
+            const context = this;
             const later = function() {
                 timeout = null;
                 if (!immediate) func.apply(context, args);
@@ -81,9 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initializations ---
     applyTemporalTheme();
-    setTimeout(() => {
+    requestAnimationFrame(() => {
         handleScroll(); // Run once on load to check initial view
-    }, 100);
+    });
     window.addEventListener('scroll', debounce(handleScroll));
 
 });
