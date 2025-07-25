@@ -53,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardTop = card.getBoundingClientRect().top;
             if (cardTop < triggerBottom) {
                 card.classList.add('is-in-view');
+            } else {
+                card.classList.remove('is-in-view');
             }
         });
     }
@@ -81,9 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initializations ---
     applyTemporalTheme();
-    requestAnimationFrame(() => {
-        handleScroll(); // Run once on load to check initial view
-    });
+    handleScroll(); // Run once on load to check initial view
     window.addEventListener('scroll', debounce(handleScroll));
 
 });
