@@ -31,18 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. Scroll-based Animations ---
     // Reveals attraction cards as they enter the viewport.
-    function debounce(func, wait = 15, immediate = true) {
+    function debounce(func, wait = 20) {
         let timeout;
         return function(...args) {
             const context = this;
-            const later = function() {
-                timeout = null;
-                if (!immediate) func.apply(context, args);
-            };
-            const callNow = immediate && !timeout;
             clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow) func.apply(context, args);
+            timeout = setTimeout(() => func.apply(context, args), wait);
         };
     }
 
@@ -62,10 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 3. Sanctuary View Logic ---
     // Manages the opening and closing of the focused view for each attraction.
     attractionCards.forEach(card => {
-        card.addEventListener('click', () => {
+        card.addEventListener('click', (e) => {
             // Do not open if already in sanctuary mode
             if (horizonContainer.classList.contains('sanctuary-is-open')) return;
 
+            e.preventDefault();
             horizonContainer.classList.add('sanctuary-is-open');
             card.classList.add('is-active-sanctuary');
             document.body.style.overflow = 'hidden';
@@ -84,6 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Initializations ---
     applyTemporalTheme();
     handleScroll(); // Run once on load to check initial view
-    window.addEventListener('scroll', debounce(handleScroll));
+    window.addEventListener('scroll', debounce(handleScroll, 20));
 
 });
