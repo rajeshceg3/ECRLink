@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardTop = card.getBoundingClientRect().top;
             if (cardTop < triggerBottom) {
                 card.classList.add('is-in-view');
+            } else {
+                card.classList.remove('is-in-view');
             }
         });
     }
@@ -58,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Do not open if already in sanctuary mode
             if (horizonContainer.classList.contains('sanctuary-is-open')) return;
 
-            e.preventDefault();
             horizonContainer.classList.add('sanctuary-is-open');
             card.classList.add('is-active-sanctuary');
             document.body.style.overflow = 'hidden';
