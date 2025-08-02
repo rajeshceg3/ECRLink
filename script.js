@@ -47,8 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardTop = card.getBoundingClientRect().top;
             if (cardTop < triggerBottom) {
                 card.classList.add('is-in-view');
-            } else {
-                card.classList.remove('is-in-view');
             }
         });
     }
