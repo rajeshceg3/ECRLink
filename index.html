@@ -16,7 +16,7 @@
 
         <!-- The initial landing experience. A moment of calm. -->
         <header class="landing-experience">
-            <video autoplay muted loop playsinline class="landing-video" src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5119-large.mp4" poster="placeholder-poster.jpg"></video>
+            <video autoplay muted loop playsinline class="landing-video" src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5119-large.mp4" poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></video>
             <div class="landing-text">
                 <h1>A journey should not be a list.<br>It should be a feeling.</h1>
             </div>
@@ -30,10 +30,11 @@
 
             <!-- Each 'attraction' is a section. A stop on the journey. -->
             <section class="attraction" id="dakshinachitra">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1563715493579-e0b3e0493b60?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFoYWJhbGlwdXJhbXxlbnwwfHwwfHx8MA%3D%3D" alt="A traditional house at DakshinaChitra heritage village">
+                            <!-- NOTE: For production, download images and serve them locally after optimizing. -->
+                            <img src="https://images.unsplash.com/photo-1622384389033-31180b06430b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="A traditional house at DakshinaChitra heritage village">
                         </figure>
                         <div class="card-title">
                             <h2>DakshinaChitra</h2>
@@ -43,12 +44,11 @@
                     <div class="sanctuary-content">
                         <p>The DakshinaChitra ("a picture of the south") is a living museum of art, architecture, and lifestyles. Each structure here is an original, rescued from demolition and reconstructed by master craftsmen. Feel the texture of the polished wood, the coolness of the terracotta tiles. We suggest finding a quiet corner in the Chettinad house and simply observing the intricate play of light through the central courtyard.</p>
                         <div class="sanctuary-actions">
-                            <!-- Icons are embedded SVG for style control and sharpness -->
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=DakshinaChitra" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -56,10 +56,10 @@
             </section>
 
             <section class="attraction" id="point-calimere">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1660512952386-45489840318d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9pbnQlMjBjYWxpbWVyZSUyMHdpbGRsaWZlJTIwYW5kJTIwYmlyZCUyMHNhbmN0dWFyeXxlbnwwfHwwfHx8MA%3D%3D" alt="Point Calimere Wildlife and Bird Sanctuary">
+                            <img src="https://images.unsplash.com/photo-1588507726487-37d45a55435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Flamingos at Point Calimere Wildlife and Bird Sanctuary">
                         </figure>
                         <div class="card-title">
                             <h2>Point Calimere Wildlife and Bird Sanctuary</h2>
@@ -69,11 +69,11 @@
                     <div class="sanctuary-content">
                         <p>Point Calimere Wildlife and Bird Sanctuary is a beautiful sanctuary that is home to a variety of migratory birds, including flamingos, pelicans, and storks. The sanctuary is also home to a number of other animals, including blackbuck, spotted deer, and wild boar. The sanctuary is a great place to go for a nature walk or a boat ride.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Point+Calimere+Wildlife+and+Bird+Sanctuary" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -81,10 +81,10 @@
             </section>
 
             <section class="attraction" id="nagapattinam">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1621439719573-1cb632e212c3?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG5hZ2FwYXR0aW5hbXxlbnwwfHwwfHx8MA%3D%3D" alt="Nagapattinam">
+                            <img src="https://images.unsplash.com/photo-1621439719573-1cb632e212c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="A coastal view of Nagapattinam">
                         </figure>
                         <div class="card-title">
                             <h2>Nagapattinam</h2>
@@ -94,11 +94,11 @@
                     <div class="sanctuary-content">
                         <p>Nagapattinam is an ancient port city that has been a center of trade and commerce for centuries. The city is home to a number of temples and other historical sites, including the Kayarohanaswamy Temple and the Soundararaja Perumal Temple. The city is also a popular pilgrimage center for Muslims, with the Nagore Dargah being a major attraction.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Nagapattinam" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -106,10 +106,10 @@
             </section>
 
             <section class="attraction" id="velankanni-church">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1734332673393-8ebc639adde2?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dmVsYW5rYW5uaSUyMGNodXJjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Velankanni Church">
+                            <img src="https://images.unsplash.com/photo-1594962453829-524653a47995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Velankanni Church">
                         </figure>
                         <div class="card-title">
                             <h2>Velankanni Church</h2>
@@ -119,11 +119,11 @@
                     <div class="sanctuary-content">
                         <p>The Basilica of Our Lady of Good Health, also known as Velankanni Church, is a major Roman Catholic pilgrimage center. The church is a beautiful example of Gothic architecture, and it is believed that the Virgin Mary appeared here in the 16th century. The church is a place of great peace and solace, and it attracts millions of pilgrims every year.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Velankanni+Church" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -131,10 +131,10 @@
             </section>
 
             <section class="attraction" id="tranquebar">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1711189764038-87ba4ca9def3?fm=jpg&q=60&w=3000&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHRyYW5xdWViYXIlMjBmb3J0fGVufDB8fDB8fHww" alt="Tranquebar">
+                            <img src="https://images.unsplash.com/photo-1605325228189-09590055106e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="The Dansborg Fort at Tranquebar">
                         </figure>
                         <div class="card-title">
                             <h2>Tranquebar (Tharangambadi)</h2>
@@ -144,11 +144,11 @@
                     <div class="sanctuary-content">
                         <p>Tranquebar, also known as Tharangambadi, is a former Danish colony that is steeped in history. The town's main attraction is the Dansborg Fort, which was built in the 17th century. The town also has a number of old churches and a beautiful beach.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Tranquebar" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -156,10 +156,10 @@
             </section>
 
             <section class="attraction" id="thillai-nataraja-temple">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1609151745346-c624e507baa2?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGhpbGxhaSUyMG5hdGFyYWphJTIwdGVtcGxlJTIwY2hpZGFtYmFyYW18ZW58MHx8MHx8fDA%3D" alt="Thillai Nataraja Temple, Chidambaram">
+                            <img src="https://images.unsplash.com/photo-1609151745346-c624e507baa2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Thillai Nataraja Temple, Chidambaram">
                         </figure>
                         <div class="card-title">
                             <h2>Thillai Nataraja Temple, Chidambaram</h2>
@@ -169,11 +169,11 @@
                     <div class="sanctuary-content">
                         <p>The Thillai Nataraja Temple is a magnificent Hindu temple dedicated to Lord Shiva as the cosmic dancer. The temple is one of the five Pancha Bootha Sthalams, representing the five elements of nature. The temple's architecture is a stunning example of Dravidian art, and the intricate carvings and sculptures are a sight to behold.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Thillai+Nataraja+Temple" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -181,10 +181,10 @@
             </section>
 
             <section class="attraction" id="pichavaram">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1661707745040-a66b40937f1b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGljaGF2YXJhbSUyMG1hbmdyb3ZlJTIwZm9yZXN0fGVufDB8fDB8fHww" alt="Pichavaram Mangrove Forest">
+                            <img src="https://images.unsplash.com/photo-1661707745040-a66b40937f1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Pichavaram Mangrove Forest">
                         </figure>
                         <div class="card-title">
                             <h2>Pichavaram Mangrove Forest</h2>
@@ -194,11 +194,11 @@
                     <div class="sanctuary-content">
                         <p>Pichavaram is the world's second-largest mangrove forest. A boat ride through the narrow canals is a magical experience. The dense mangrove trees form a canopy over the water, creating a serene and mystical atmosphere. The forest is also a bird watcher's paradise, with a variety of resident and migratory birds.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Pichavaram+Mangrove+Forest" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -206,10 +206,10 @@
             </section>
 
             <section class="attraction" id="auroville">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1598792598750-1f0dc619e6a2?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXVyb3ZpbGxlfGVufDB8fDB8fHww" alt="Auroville">
+                            <img src="https://images.unsplash.com/photo-1598792598750-1f0dc619e6a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="The Matrimandir at Auroville">
                         </figure>
                         <div class="card-title">
                             <h2>Auroville</h2>
@@ -219,11 +219,11 @@
                     <div class="sanctuary-content">
                         <p>Auroville is a unique and experimental township that is dedicated to the ideal of human unity. The township is home to people from all over the world, and it is a place of great peace and tranquility. The Matrimandir, a golden globe that is the spiritual center of Auroville, is a must-see.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Auroville" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -231,10 +231,10 @@
             </section>
 
             <section class="attraction" id="pondicherry">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1569157087866-f4a8e9250605?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cG9uZGljaGVycnl8ZW58MHx8MHx8fDA%3D" alt="Pondicherry">
+                            <img src="https://images.unsplash.com/photo-1569157087866-f4a8e9250605?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="The French Quarter in Pondicherry">
                         </figure>
                         <div class="card-title">
                             <h2>Pondicherry</h2>
@@ -244,11 +244,11 @@
                     <div class="sanctuary-content">
                         <p>Pondicherry, officially known as Puducherry, is a charming coastal town that was once a French colony. The town's French quarter is a maze of cobblestone streets, colonial-era villas, and chic boutiques. The town also has a beautiful promenade that is perfect for a leisurely stroll.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Pondicherry" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -256,10 +256,10 @@
             </section>
 
             <section class="attraction" id="vgp-marine-kingdom">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1718632286039-df9727a7816e?fm=jpg&q=60&w=3000&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHZncCUyMG1hcmluZSUyMGtpbmdkb218ZW58MHx8MHx8fDA%3D" alt="VGP Marine Kingdom">
+                            <img src="https://images.unsplash.com/photo-1580295644833-cab6a6d13137?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="An underwater tunnel at an aquarium">
                         </figure>
                         <div class="card-title">
                             <h2>VGP Marine Kingdom</h2>
@@ -269,11 +269,11 @@
                     <div class="sanctuary-content">
                         <p>VGP Marine Kingdom is a captivating underwater world that is home to a diverse range of marine life. The walk-through aquarium allows you to get up close and personal with sharks, rays, and a variety of other fish. The aquarium also has a number of interactive exhibits that are perfect for all ages.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=VGP+Marine+Kingdom" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -281,10 +281,10 @@
             </section>
 
             <section class="attraction" id="iskcon">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1629222664728-88ec7438126d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aXNrY29uJTIwdGVtcGxlJTIwY2hlbm5haXxlbnwwfHwwfHx8MA%3D%3D" alt="ISKCON Temple, Chennai">
+                            <img src="https://images.unsplash.com/photo-1629222664728-88ec7438126d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="ISKCON Temple, Chennai">
                         </figure>
                         <div class="card-title">
                             <h2>ISKCON Temple, Chennai</h2>
@@ -294,11 +294,11 @@
                     <div class="sanctuary-content">
                         <p>The ISKCON Temple in Chennai is a magnificent temple dedicated to Lord Krishna. The temple's architecture is a blend of traditional and modern styles, and the serene atmosphere provides a perfect escape from the hustle and bustle of the city. The temple also has a restaurant that serves delicious vegetarian food.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=ISKCON+Temple,+Chennai" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -306,10 +306,10 @@
             </section>
 
             <section class="attraction" id="cholamandal">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1610200568372-a403daa3bf13?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGNvdmVsb25nJTIwYmVhY2h8ZW58MHx8MHx8fDA%3D" alt="A bronze sculpture gleaming in soft light at Cholamandal Artists' Village">
+                            <img src="https://images.unsplash.com/photo-1552317894-a3d2c91a721e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="A bronze sculpture gleaming in soft light at Cholamandal Artists' Village">
                         </figure>
                         <div class="card-title">
                             <h2>Cholamandal Artists' Village</h2>
@@ -319,11 +319,11 @@
                     <div class="sanctuary-content">
                         <p>Founded in 1966, this is the largest self-supporting artists' commune in India. It is not merely a gallery, but a cradle of the Madras Movement of Art. The air hums with quiet creation. Observe how the artists use form and material to translate ancient motifs into a modern language. The textures here—from rough canvas to polished bronze—tell their own stories.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Cholamandal+Artists+Village" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -331,10 +331,10 @@
             </section>
 
             <section class="attraction" id="mahabalipuram">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1563715493579-e0b3e0493b60?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFoYWJhbGlwdXJhbXxlbnwwfHwwfHx8MA%3D%3D" alt="The Shore Temple at Mahabalipuram">
+                            <img src="https://images.unsplash.com/photo-1602086381928-75e8d0e139b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="The Shore Temple at Mahabalipuram">
                         </figure>
                         <div class="card-title">
                             <h2>Mahabalipuram</h2>
@@ -344,11 +344,11 @@
                     <div class="sanctuary-content">
                         <p>A UNESCO World Heritage site, Mahabalipuram's rock-cut temples and shore temple are a testament to the Pallava dynasty's architectural prowess. The sea breeze carries stories of ancient mariners and mythical creatures. Find a spot near the Shore Temple and watch the waves crash against a backdrop of centuries-old stone.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Mahabalipuram" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -356,10 +356,10 @@
             </section>
 
             <section class="attraction" id="covelong">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1610200568372-a403daa3bf13?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGNvdmVsb25nJTIwYmVhY2h8ZW58MHx8MHx8fDA%3D" alt="A serene beach with fishing boats">
+                            <img src="https://images.unsplash.com/photo-1610200568372-a403daa3bf13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="A serene beach with fishing boats in Covelong">
                         </figure>
                         <div class="card-title">
                             <h2>Covelong (Kovalam) Beach</h2>
@@ -369,11 +369,11 @@
                     <div class="sanctuary-content">
                         <p>Once a sleepy fishing village, Covelong is now a vibrant hub for surfers and beach lovers. The gentle curve of the bay, the colourful fishing boats, and the laughter of children playing in the sand create a symphony of simple joys. Feel the warmth of the sand, the coolness of the sea, and the gentle caress of the sea breeze.</p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Covelong+Beach" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -381,10 +381,10 @@
             </section>
 
             <section class="attraction" id="muttukadu">
-                <article class="attraction-card">
+                <article class="attraction-card" tabindex="0">
                     <div class="card-content">
                         <figure class="card-image">
-                            <img src="https://images.unsplash.com/photo-1569277895449-f0772bd7fbfb?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG11dHR1a2FkdXxlbnwwfHwwfHx8MA%3D%3D" alt="Boats on the backwaters of Muttukadu">
+                            <img src="https://images.unsplash.com/photo-1569277895449-f0772bd7fbfb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Boats on the backwaters of Muttukadu">
                         </figure>
                         <div class="card-title">
                             <h2>Muttukadu Boat House</h2>
@@ -394,11 +394,11 @@
                     <div class="sanctuary-content">
                         <p>The Muttukadu Boat House offers a serene escape from the bustling city. Glide through the tranquil backwaters, surrounded by lush greenery and the gentle lapping of water against your boat. It's a place to slow down, to breathe, and to connect with the gentle rhythm of nature. </p>
                         <div class="sanctuary-actions">
-                            <a href="#" class="icon-button" aria-label="Location">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Muttukadu+Boat+House" target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Location">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </a>
-                            <a href="#" class="icon-button" aria-label="Add to Rhythm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <a href="#" class="icon-button add-to-rhythm" role="button" aria-label="Add to Itinerary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </a>
                         </div>
                     </div>

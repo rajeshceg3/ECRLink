@@ -53,25 +53,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 3. Sanctuary View Logic ---
     // Manages the opening and closing of the focused view for each attraction.
-    attractionCards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            // Do not open if already in sanctuary mode
-            if (horizonContainer.classList.contains('sanctuary-is-open')) return;
+    let lastFocusedElement;
 
-            e.preventDefault();
-            horizonContainer.classList.add('sanctuary-is-open');
-            card.classList.add('is-active-sanctuary');
-            document.body.style.overflow = 'hidden';
-        });
-    });
+    function openSanctuary(card) {
+        if (horizonContainer.classList.contains('sanctuary-is-open')) return;
 
-    closeButton.addEventListener('click', () => {
+        lastFocusedElement = document.activeElement;
+
+        horizonContainer.classList.add('sanctuary-is-open');
+        card.classList.add('is-active-sanctuary');
+        document.body.style.overflow = 'hidden';
+
+        // Focus the close button for accessibility
+        closeButton.focus();
+    }
+
+    function closeSanctuary() {
         const activeSanctuary = document.querySelector('.is-active-sanctuary');
         horizonContainer.classList.remove('sanctuary-is-open');
         if (activeSanctuary) {
             activeSanctuary.classList.remove('is-active-sanctuary');
         }
         document.body.style.overflow = '';
+
+        // Return focus to the element that opened the sanctuary
+        if (lastFocusedElement) {
+            lastFocusedElement.focus();
+        }
+    }
+
+    attractionCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Do not open if the click is on a button inside the sanctuary actions
+            if (e.target.closest('.sanctuary-actions')) {
+                return;
+            }
+            openSanctuary(card);
+        });
+
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openSanctuary(card);
+            }
+        });
+    });
+
+    closeButton.addEventListener('click', closeSanctuary);
+
+    // --- 4. Placeholder for "Add to Itinerary" ---
+    const addToRhythmButtons = document.querySelectorAll('.add-to-rhythm');
+    addToRhythmButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation(); // Stop the click from bubbling up to the card
+            alert('This feature is coming soon!');
+        });
     });
 
     // --- Initializations ---
