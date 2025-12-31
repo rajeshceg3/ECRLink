@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: ecrlink
+    runtime: static
+    buildCommand: echo "No build command"
+    staticPublishPath: .
+    branch: main
+    autoDeployTrigger: 'off'
