@@ -2,7 +2,7 @@ services:
   - type: web
     name: ecrlink
     runtime: static
-    buildCommand: echo "No build command"
-    staticPublishPath: .
+    buildCommand: npm run build
+    staticPublishPath: dist
     branch: main
     autoDeployTrigger: 'off'
