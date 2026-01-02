@@ -1,4 +1,5 @@
 // --- 4. Itinerary Logic ---
+import { showToast } from './toast.js';
 
 export function initItinerary(addToRhythmButtons) {
     // Load itinerary from local storage
@@ -31,10 +32,10 @@ export function initItinerary(addToRhythmButtons) {
 
             if (itinerary.includes(id)) {
                 itinerary = itinerary.filter(item => item !== id);
-                alert('Removed from Itinerary');
+                showToast('Removed from Itinerary');
             } else {
                 itinerary.push(id);
-                alert('Added to Itinerary');
+                showToast('Added to Itinerary');
             }
 
             localStorage.setItem('itinerary', JSON.stringify(itinerary));
