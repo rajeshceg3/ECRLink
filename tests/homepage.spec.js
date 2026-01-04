@@ -35,22 +35,30 @@ test('Itinerary works', async ({ page }) => {
 
   const addToItineraryBtn = page.locator('.sanctuary-actions .add-to-rhythm').first();
 
-  // Handle Add alert
-  page.once('dialog', async dialog => {
-    expect(dialog.message()).toBe('Added to Itinerary');
-    await dialog.accept();
-  });
+  // Add to Itinerary
   await addToItineraryBtn.click();
+
+  // Verify Toast appears
+  const toast = page.locator('.toast');
+  await expect(toast).toBeVisible();
+  await expect(toast).toHaveText('Added to Itinerary');
 
   // Verify state change (class added)
   await expect(addToItineraryBtn).toHaveClass(/added/);
 
-  // Handle Remove alert
-  page.once('dialog', async dialog => {
-    expect(dialog.message()).toBe('Removed from Itinerary');
-    await dialog.accept();
-  });
+  // Wait for toast to disappear (optional, but good for cleanliness)
+  // The toast lasts 3 seconds. We can just click again.
+
+  // Remove from Itinerary
   await addToItineraryBtn.click();
+
+  // Verify Toast appears (it might be a new toast or the text updates)
+  // Since the previous toast might still be there, we should check text
+  // However, toast.js appends a NEW toast div for each call.
+  // So we should look for the *last* toast or check that a toast with text exists.
+  const toasts = page.locator('.toast');
+  await expect(toasts.last()).toHaveText('Removed from Itinerary');
+  await expect(toasts.last()).toBeVisible();
 
   // Verify state change back (class removed)
   await expect(addToItineraryBtn).not.toHaveClass(/added/);
