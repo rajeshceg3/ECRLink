@@ -6,10 +6,10 @@ import { renderAttractions } from './renderer.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const horizonContainer = document.querySelector('.horizon-container');
-  const journeyContainer = document.querySelector('.journey');
+  const attractionsList = document.querySelector('.attractions-list');
 
   // 1. Render content dynamically
-  renderAttractions(journeyContainer);
+  renderAttractions(attractionsList);
 
   // 2. Select elements *after* rendering
   const attractionCards = document.querySelectorAll('.attraction-card');
