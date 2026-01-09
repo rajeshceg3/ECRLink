@@ -263,6 +263,19 @@ body {
   color: white;
 }
 
+/* Toggle icons for Add/Remove state */
+.add-to-rhythm .icon-remove {
+  display: none;
+}
+
+.add-to-rhythm.added .icon-add {
+  display: none;
+}
+
+.add-to-rhythm.added .icon-remove {
+  display: block;
+}
+
 .sanctuary-close-button {
   position: fixed;
   top: 40px;
