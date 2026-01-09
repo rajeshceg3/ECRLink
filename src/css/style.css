@@ -351,6 +351,46 @@ body {
   pointer-events: auto;
 }
 
+/* ---- UX Enhancement: Itinerary Status ---- */
+.itinerary-status {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  z-index: 102;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+  transition: opacity 0.5s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .itinerary-status {
+    top: 20px;
+    left: 20px;
+    padding: 8px 16px;
+  }
+}
+
+.itinerary-count {
+  background: white;
+  color: #1a1a1a;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
 /* ---- Accessibility: Reduced Motion ---- */
 @media (prefers-reduced-motion: reduce) {
   *,
