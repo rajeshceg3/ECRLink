@@ -4,14 +4,41 @@
 export function initSanctuary(horizonContainer, attractionCards, closeButton) {
   let lastFocusedElement;
 
-  function openSanctuary(card) {
+  function setInertToSiblings(isActive) {
+    const header = document.querySelector('.landing-experience');
+
+    if (isActive) {
+      if (header) header.setAttribute('inert', '');
+
+      // Inert all other attractions
+      document.querySelectorAll('.attraction').forEach((section) => {
+        if (!section.querySelector('.is-active-sanctuary')) {
+          section.setAttribute('inert', '');
+        }
+      });
+    } else {
+      if (header) header.removeAttribute('inert');
+      document.querySelectorAll('.attraction').forEach((section) => {
+        section.removeAttribute('inert');
+      });
+    }
+  }
+
+  function openSanctuary(card, trigger) {
     if (horizonContainer.classList.contains('sanctuary-is-open')) return;
 
     lastFocusedElement = document.activeElement;
 
     horizonContainer.classList.add('sanctuary-is-open');
     card.classList.add('is-active-sanctuary');
+
+    if (trigger) {
+        trigger.setAttribute('aria-expanded', 'true');
+    }
+
     document.body.style.overflow = 'hidden';
+
+    setInertToSiblings(true);
 
     // Focus the close button for accessibility
     closeButton.focus();
@@ -22,8 +49,15 @@ export function initSanctuary(horizonContainer, attractionCards, closeButton) {
     horizonContainer.classList.remove('sanctuary-is-open');
     if (activeSanctuary) {
       activeSanctuary.classList.remove('is-active-sanctuary');
+      // Find the trigger to update aria-expanded
+      const trigger = activeSanctuary.querySelector('.card-content');
+      if (trigger) {
+          trigger.setAttribute('aria-expanded', 'false');
+      }
     }
     document.body.style.overflow = '';
+
+    setInertToSiblings(false);
 
     // Return focus to the element that opened the sanctuary
     if (lastFocusedElement) {
@@ -32,20 +66,21 @@ export function initSanctuary(horizonContainer, attractionCards, closeButton) {
   }
 
   attractionCards.forEach((card) => {
-    card.addEventListener('click', (e) => {
-      // Do not open if the click is on a button inside the sanctuary actions
-      if (e.target.closest('.sanctuary-actions')) {
-        return;
-      }
-      openSanctuary(card);
-    });
+    // The interactive trigger is now the .card-content
+    const trigger = card.querySelector('.card-content');
 
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openSanctuary(card);
-      }
-    });
+    if (trigger) {
+        trigger.addEventListener('click', (e) => {
+          openSanctuary(card, trigger);
+        });
+
+        trigger.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openSanctuary(card, trigger);
+          }
+        });
+    }
   });
 
   closeButton.addEventListener('click', closeSanctuary);
