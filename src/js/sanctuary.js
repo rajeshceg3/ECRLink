@@ -70,7 +70,7 @@ export function initSanctuary(horizonContainer, attractionCards, closeButton) {
     const trigger = card.querySelector('.card-content');
 
     if (trigger) {
-        trigger.addEventListener('click', (e) => {
+        trigger.addEventListener('click', () => {
           openSanctuary(card, trigger);
         });
 
