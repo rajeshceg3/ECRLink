@@ -8,6 +8,7 @@ export function initItinerary(addToRhythmButtons) {
   try {
     itinerary = JSON.parse(localStorage.getItem('itinerary')) || [];
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.warn('Failed to load itinerary from localStorage:', error);
     itinerary = [];
   }
@@ -55,6 +56,7 @@ export function initItinerary(addToRhythmButtons) {
       try {
         localStorage.setItem('itinerary', JSON.stringify(itinerary));
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Failed to save itinerary to localStorage:', error);
         showToast('Failed to save progress');
       }
