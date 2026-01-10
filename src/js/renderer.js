@@ -1,76 +1,107 @@
 // --- 1.1 Content Renderer ---
 import { attractions } from './data.js';
 
+function createElement(tag, className = '', attributes = {}, textContent = '') {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+  if (textContent) element.textContent = textContent;
+  return element;
+}
+
+function createSVG(className, pathContent) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  if (className) svg.setAttribute('class', className);
+  svg.setAttribute('width', '24');
+  svg.setAttribute('height', '24');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '1.5');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+  svg.innerHTML = pathContent;
+  return svg;
+}
+
 export function renderAttractions(containerElement) {
-  // Clear existing attractions
-  containerElement.innerHTML = '';
+  // Clear existing attractions - safer than innerHTML as we are modifying the DOM tree directly
+  while (containerElement.firstChild) {
+    containerElement.removeChild(containerElement.firstChild);
+  }
 
   if (!attractions || attractions.length === 0) {
-    containerElement.innerHTML = '<p class="error-message">No destinations found.</p>';
+    const errorMsg = createElement('p', 'error-message', {}, 'No destinations found.');
+    containerElement.appendChild(errorMsg);
     return;
   }
 
   attractions.forEach((attraction) => {
-    const section = document.createElement('section');
-    section.className = 'attraction';
-    section.id = attraction.id;
+    const section = createElement('section', 'attraction', { id: attraction.id });
 
-    // Use div for card wrapper.
-    // .card-content becomes the interactive trigger button.
-    section.innerHTML = `
-      <article class="attraction-card">
-        <div
-          class="card-content"
-          tabindex="0"
-          role="button"
-          aria-haspopup="dialog"
-          aria-expanded="false"
-          aria-label="Open sanctuary for ${attraction.title}"
-        >
-          <figure class="card-image">
-            <img
-              src="${attraction.image}"
-              alt="${attraction.alt}"
-              loading="lazy"
-            />
-          </figure>
-          <div class="card-title">
-            <h2>${attraction.title}</h2>
-            <p>${attraction.subtitle}</p>
-          </div>
-        </div>
-        <div class="sanctuary-content">
-          <p>${attraction.description}</p>
-          <div class="sanctuary-actions">
-            <a
-              href="${attraction.mapLink}"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="icon-button"
-              aria-label="Location"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-            </a>
-            <button
-              type="button"
-              class="icon-button add-to-rhythm"
-              aria-label="Add to Itinerary"
-            >
-              <svg class="icon-add" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-              <svg class="icon-remove" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </article>
-    `;
+    const article = createElement('article', 'attraction-card');
+
+    // --- Card Content (Interactive Trigger) ---
+    const cardContent = createElement('div', 'card-content', {
+      tabindex: '0',
+      role: 'button',
+      'aria-haspopup': 'dialog',
+      'aria-expanded': 'false',
+      'aria-label': `Open sanctuary for ${attraction.title}`
+    });
+
+    const figure = createElement('figure', 'card-image');
+    const img = createElement('img', '', {
+      src: attraction.image,
+      alt: attraction.alt,
+      loading: 'lazy'
+    });
+    figure.appendChild(img);
+
+    const cardTitleDiv = createElement('div', 'card-title');
+    const h2 = createElement('h2', '', {}, attraction.title);
+    const pSubtitle = createElement('p', '', {}, attraction.subtitle);
+    cardTitleDiv.appendChild(h2);
+    cardTitleDiv.appendChild(pSubtitle);
+
+    cardContent.appendChild(figure);
+    cardContent.appendChild(cardTitleDiv);
+
+    // --- Sanctuary Content ---
+    const sanctuaryContent = createElement('div', 'sanctuary-content');
+    const pDesc = createElement('p', '', {}, attraction.description);
+
+    const sanctuaryActions = createElement('div', 'sanctuary-actions');
+
+    // Location Link
+    const locationLink = createElement('a', 'icon-button', {
+      href: attraction.mapLink,
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      'aria-label': 'Location'
+    });
+    locationLink.appendChild(createSVG('', '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>'));
+
+    // Add/Remove Button
+    const addBtn = createElement('button', 'icon-button add-to-rhythm', {
+      type: 'button',
+      'aria-label': 'Add to Itinerary'
+    });
+
+    // Icon Add
+    addBtn.appendChild(createSVG('icon-add', '<line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>'));
+    // Icon Remove
+    addBtn.appendChild(createSVG('icon-remove', '<polyline points="20 6 9 17 4 12"></polyline>'));
+
+    sanctuaryActions.appendChild(locationLink);
+    sanctuaryActions.appendChild(addBtn);
+
+    sanctuaryContent.appendChild(pDesc);
+    sanctuaryContent.appendChild(sanctuaryActions);
+
+    article.appendChild(cardContent);
+    article.appendChild(sanctuaryContent);
+    section.appendChild(article);
 
     containerElement.appendChild(section);
   });

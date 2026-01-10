@@ -3,12 +3,23 @@ import { showToast } from './toast.js';
 
 export function initItinerary(addToRhythmButtons) {
   let itinerary = [];
+  const countDisplay = document.querySelector('.itinerary-count');
+
   try {
     itinerary = JSON.parse(localStorage.getItem('itinerary')) || [];
   } catch (error) {
     console.warn('Failed to load itinerary from localStorage:', error);
     itinerary = [];
   }
+
+  function updateDisplay() {
+    if (countDisplay) {
+      countDisplay.textContent = itinerary.length;
+    }
+  }
+
+  // Initialize display
+  updateDisplay();
 
   function updateButtonState(button, id) {
     if (itinerary.includes(id)) {
@@ -48,6 +59,7 @@ export function initItinerary(addToRhythmButtons) {
         showToast('Failed to save progress');
       }
       updateButtonState(button, id);
+      updateDisplay();
     });
   });
 }
