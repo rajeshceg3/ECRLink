@@ -9,7 +9,7 @@ function createElement(tag, className = '', attributes = {}, textContent = '') {
   return element;
 }
 
-function createSVG(className, pathContent) {
+function createSVG(className, elements) {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   if (className) svg.setAttribute('class', className);
   svg.setAttribute('width', '24');
@@ -20,7 +20,13 @@ function createSVG(className, pathContent) {
   svg.setAttribute('stroke-width', '1.5');
   svg.setAttribute('stroke-linecap', 'round');
   svg.setAttribute('stroke-linejoin', 'round');
-  svg.innerHTML = pathContent;
+
+  elements.forEach(({ tag, attrs }) => {
+    const child = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    Object.entries(attrs).forEach(([key, value]) => child.setAttribute(key, value));
+    svg.appendChild(child);
+  });
+
   return svg;
 }
 
@@ -80,7 +86,10 @@ export function renderAttractions(containerElement) {
       rel: 'noopener noreferrer',
       'aria-label': 'Location'
     });
-    locationLink.appendChild(createSVG('', '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>'));
+    locationLink.appendChild(createSVG('', [
+      { tag: 'path', attrs: { d: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z' } },
+      { tag: 'circle', attrs: { cx: '12', cy: '10', r: '3' } }
+    ]));
 
     // Add/Remove Button
     const addBtn = createElement('button', 'icon-button add-to-rhythm', {
@@ -89,9 +98,14 @@ export function renderAttractions(containerElement) {
     });
 
     // Icon Add
-    addBtn.appendChild(createSVG('icon-add', '<line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>'));
+    addBtn.appendChild(createSVG('icon-add', [
+      { tag: 'line', attrs: { x1: '12', y1: '5', x2: '12', y2: '19' } },
+      { tag: 'line', attrs: { x1: '5', y1: '12', x2: '19', y2: '12' } }
+    ]));
     // Icon Remove
-    addBtn.appendChild(createSVG('icon-remove', '<polyline points="20 6 9 17 4 12"></polyline>'));
+    addBtn.appendChild(createSVG('icon-remove', [
+      { tag: 'polyline', attrs: { points: '20 6 9 17 4 12' } }
+    ]));
 
     sanctuaryActions.appendChild(locationLink);
     sanctuaryActions.appendChild(addBtn);
