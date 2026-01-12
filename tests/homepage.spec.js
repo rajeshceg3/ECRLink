@@ -63,3 +63,53 @@ test('Itinerary works', async ({ page }) => {
   // Verify state change back (class removed)
   await expect(addToItineraryBtn).not.toHaveClass(/added/);
 });
+
+test('Itinerary persists after page reload', async ({ page }) => {
+  await page.goto('/');
+
+  const firstCard = page.locator('.attraction-card').first();
+  await firstCard.click();
+
+  const addToItineraryBtn = page.locator('.sanctuary-actions .add-to-rhythm').first();
+  await addToItineraryBtn.click();
+  await expect(addToItineraryBtn).toHaveClass(/added/);
+
+  // Reload the page
+  await page.reload();
+
+  // We need to re-open the sanctuary or check the state if it was visible.
+  // The 'added' class is on the button inside the sanctuary, which is inside the card.
+  // The card is re-rendered.
+  const firstCardAfterReload = page.locator('.attraction-card').first();
+  await firstCardAfterReload.click();
+
+  const addToItineraryBtnAfterReload = page.locator('.sanctuary-actions .add-to-rhythm').first();
+  await expect(addToItineraryBtnAfterReload).toHaveClass(/added/);
+});
+
+test('Keyboard navigation opens sanctuary', async ({ page }) => {
+  await page.goto('/');
+
+  // Press Tab to focus the first interactive element.
+  // The order might be: Video (maybe?) -> Card Content (tabindex=0).
+  // Let's press Tab enough times to get to the first card.
+  // The cards are generated.
+  await page.keyboard.press('Tab'); // Likely landing video if controls? No controls.
+  // The first focusable element should be the first card content because of tabindex=0
+
+  const firstCardContent = page.locator('.card-content').first();
+  await expect(firstCardContent).toBeFocused();
+
+  // Press Enter to open
+  await page.keyboard.press('Enter');
+
+  const container = page.locator('.horizon-container');
+  await expect(container).toHaveClass(/sanctuary-is-open/);
+
+  // Close with keyboard (Close button should be focused)
+  const closeButton = page.locator('.sanctuary-close-button');
+  await expect(closeButton).toBeFocused();
+  await page.keyboard.press('Enter');
+
+  await expect(container).not.toHaveClass(/sanctuary-is-open/);
+});
