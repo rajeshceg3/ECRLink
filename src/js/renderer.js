@@ -42,10 +42,12 @@ export function renderAttractions(containerElement) {
     return;
   }
 
-  attractions.forEach((attraction) => {
+  attractions.forEach((attraction, index) => {
     const section = createElement('section', 'attraction', { id: attraction.id });
 
-    const article = createElement('article', 'attraction-card');
+    const article = createElement('article', 'attraction-card', {
+      style: `transition-delay: ${index * 100}ms`
+    });
 
     // --- Card Content (Interactive Trigger) ---
     const cardContent = createElement('div', 'card-content', {
