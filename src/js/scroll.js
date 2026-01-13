@@ -1,27 +1,25 @@
 // --- 2. Scroll-based Animations ---
 // Reveals attraction cards as they enter the viewport.
-
-function debounce(func, wait = 20) {
-  let timeout;
-  return function (...args) {
-    const context = this;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(context, args), wait);
-  };
-}
+// OPTIMIZATION: Uses IntersectionObserver to avoid main-thread layout thrashing.
 
 export function initScrollAnimations(attractionCards) {
-  function handleScroll() {
-    const triggerBottom = (window.innerHeight / 5) * 4;
+  const observerOptions = {
+    root: null, // viewport
+    rootMargin: '0px 0px -15% 0px', // Trigger when element is 15% from bottom
+    threshold: 0.1 // Trigger when 10% of the element is visible
+  };
 
-    attractionCards.forEach((card) => {
-      const cardTop = card.getBoundingClientRect().top;
-      if (cardTop < triggerBottom) {
-        card.classList.add('is-in-view');
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in-view');
+        // Once revealed, we don't need to observe it anymore
+        observer.unobserve(entry.target);
       }
     });
-  }
+  }, observerOptions);
 
-  handleScroll(); // Run once on load to check initial view
-  window.addEventListener('scroll', debounce(handleScroll, 20));
+  attractionCards.forEach((card) => {
+    observer.observe(card);
+  });
 }
