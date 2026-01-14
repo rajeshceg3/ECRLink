@@ -25,7 +25,7 @@ export function showToast(message) {
     toast.classList.add('show');
   });
 
-  // Remove after timeout
+  // Remove after timeout (5000ms for better accessibility)
   setTimeout(() => {
     toast.classList.remove('show');
     toast.addEventListener('transitionend', () => {
@@ -34,5 +34,5 @@ export function showToast(message) {
         container.remove();
       }
     });
-  }, 3000);
+  }, 5000);
 }
