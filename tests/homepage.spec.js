@@ -13,6 +13,12 @@ test('Sanctuary view opens when an attraction card is clicked', async ({ page })
   const container = page.locator('.horizon-container');
   await expect(container).toHaveClass(/sanctuary-is-open/);
   await expect(firstCard).toHaveClass(/is-active-sanctuary/);
+
+  // Verify close button visibility
+  const closeButton = page.locator('.sanctuary-close-button');
+  await expect(closeButton).toBeVisible();
+  // Ensure it has the correct accessible name
+  await expect(closeButton).toHaveAttribute('aria-label', 'Close sanctuary');
 });
 
 test('Sanctuary view closes when close button is clicked', async ({ page }) => {
