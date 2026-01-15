@@ -3,6 +3,7 @@ import { initScrollAnimations } from './scroll.js';
 import { initSanctuary } from './sanctuary.js';
 import { initItinerary } from './itinerary.js';
 import { renderAttractions } from './renderer.js';
+import { initPWA } from './pwa.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const horizonContainer = document.querySelector('.horizon-container');
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations(attractionCards);
   initSanctuary(horizonContainer, attractionCards, closeButton);
   initItinerary(addToRhythmButtons);
+  initPWA();
 
   // Respect reduced motion preferences for the video
   const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
