@@ -45,9 +45,9 @@ test('Itinerary works', async ({ page }) => {
   await addToItineraryBtn.click();
 
   // Verify Toast appears
-  const toast = page.locator('.toast');
+  // Use getByText to avoid conflict with PWA 'offline ready' toast
+  const toast = page.locator('.toast').filter({ hasText: 'Added to Itinerary' });
   await expect(toast).toBeVisible();
-  await expect(toast).toHaveText('Added to Itinerary');
 
   // Verify state change (class added)
   await expect(addToItineraryBtn).toHaveClass(/added/);
@@ -58,13 +58,9 @@ test('Itinerary works', async ({ page }) => {
   // Remove from Itinerary
   await addToItineraryBtn.click();
 
-  // Verify Toast appears (it might be a new toast or the text updates)
-  // Since the previous toast might still be there, we should check text
-  // However, toast.js appends a NEW toast div for each call.
-  // So we should look for the *last* toast or check that a toast with text exists.
-  const toasts = page.locator('.toast');
-  await expect(toasts.last()).toHaveText('Removed from Itinerary');
-  await expect(toasts.last()).toBeVisible();
+  // Verify Toast appears
+  const removedToast = page.locator('.toast').filter({ hasText: 'Removed from Itinerary' });
+  await expect(removedToast).toBeVisible();
 
   // Verify state change back (class removed)
   await expect(addToItineraryBtn).not.toHaveClass(/added/);
