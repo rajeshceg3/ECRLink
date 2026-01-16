@@ -32,6 +32,20 @@ export function initItinerary(addToRhythmButtons) {
     // Update Counter
     if (countDisplay) {
       countDisplay.textContent = itinerary.length;
+
+      // Trigger Pulse Animation
+      const statusContainer = document.querySelector('.itinerary-status');
+      if (statusContainer) {
+          statusContainer.classList.remove('pulse');
+          // Force reflow
+          void statusContainer.offsetWidth;
+          statusContainer.classList.add('pulse');
+
+          // Remove class after animation to allow re-triggering
+          setTimeout(() => {
+              statusContainer.classList.remove('pulse');
+          }, 300);
+      }
     }
 
     // Update All Buttons

@@ -37,8 +37,17 @@ export function renderAttractions(containerElement) {
   }
 
   if (!attractions || attractions.length === 0) {
-    const errorMsg = createElement('p', 'error-message', {}, 'No destinations found.');
-    containerElement.appendChild(errorMsg);
+    const errorContainer = createElement('div', 'error-container');
+    const errorIcon = createSVG('error-icon', [
+       { tag: 'circle', attrs: { cx: '12', cy: '12', r: '10' } },
+       { tag: 'line', attrs: { x1: '12', y1: '8', x2: '12', y2: '12' } },
+       { tag: 'line', attrs: { x1: '12', y1: '16', x2: '12', y2: '16' } }
+    ]);
+    const errorMsg = createElement('p', 'error-message', {}, 'No destinations found. The path is unclear.');
+
+    errorContainer.appendChild(errorIcon);
+    errorContainer.appendChild(errorMsg);
+    containerElement.appendChild(errorContainer);
     return;
   }
 
@@ -59,11 +68,35 @@ export function renderAttractions(containerElement) {
     });
 
     const figure = createElement('figure', 'card-image');
+
+    // Skeleton Loader
+    const skeleton = createElement('div', 'image-skeleton');
+    figure.appendChild(skeleton);
+
     const img = createElement('img', '', {
       src: attraction.image,
       alt: attraction.alt,
       loading: 'lazy'
     });
+
+    // Image Load Handler
+    img.onload = () => {
+      figure.classList.add('img-loaded');
+      // Remove skeleton from DOM after transition to clean up
+      setTimeout(() => {
+        if (skeleton.parentNode) {
+          skeleton.parentNode.removeChild(skeleton);
+        }
+      }, 500);
+    };
+
+    // Error Handler
+    img.onerror = () => {
+      // Keep skeleton or show error state
+      // For now, we leave the dark background
+      figure.classList.add('img-loaded'); // Reveal the broken image icon or alt text space
+    };
+
     figure.appendChild(img);
 
     const cardTitleDiv = createElement('div', 'card-title');
