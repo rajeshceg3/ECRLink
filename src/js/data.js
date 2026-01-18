@@ -4,7 +4,7 @@ export const attractions = [
     title: "DakshinaChitra",
     subtitle: "Where the soul of the South is etched in light and shadow.",
     description: "The DakshinaChitra (\"a picture of the south\") is a living museum of art, architecture, and lifestyles. Each structure here is an original, rescued from demolition and reconstructed by master craftsmen. Feel the texture of the polished wood, the coolness of the terracotta tiles. We suggest finding a quiet corner in the Chettinad house and simply observing the intricate play of light through the central courtyard.",
-    image: "https://images.unsplash.com/photo-1622384389033-31180b06430b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+    image: "https://images.unsplash.com/photo-1660915223003-7df0db2e57d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     alt: "A traditional house at DakshinaChitra heritage village",
     mapLink: "https://www.google.com/maps/search/?api=1&query=DakshinaChitra"
   },
@@ -13,7 +13,7 @@ export const attractions = [
     title: "Point Calimere Wildlife and Bird Sanctuary",
     subtitle: "A haven for migratory birds.",
     description: "Point Calimere Wildlife and Bird Sanctuary is a beautiful sanctuary that is home to a variety of migratory birds, including flamingos, pelicans, and storks. The sanctuary is also home to a number of other animals, including blackbuck, spotted deer, and wild boar. The sanctuary is a great place to go for a nature walk or a boat ride.",
-    image: "https://images.unsplash.com/photo-1588507726487-37d45a55435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+    image: "https://images.unsplash.com/photo-1750666411422-af8218cf7568?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     alt: "Flamingos at Point Calimere Wildlife and Bird Sanctuary",
     mapLink: "https://www.google.com/maps/search/?api=1&query=Point+Calimere+Wildlife+and+Bird+Sanctuary"
   },
@@ -31,7 +31,7 @@ export const attractions = [
     title: "Velankanni Church",
     subtitle: "A beacon of faith on the shores of the Bay of Bengal.",
     description: "The Basilica of Our Lady of Good Health, also known as Velankanni Church, is a major Roman Catholic pilgrimage center. The church is a beautiful example of Gothic architecture, and it is believed that the Virgin Mary appeared here in the 16th century. The church is a place of great peace and solace, and it attracts millions of pilgrims every year.",
-    image: "https://images.unsplash.com/photo-1594962453829-524653a47995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "https://images.unsplash.com/photo-1683281944394-23dfce41b46c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     alt: "Velankanni Church",
     mapLink: "https://www.google.com/maps/search/?api=1&query=Velankanni+Church"
   },
@@ -40,7 +40,7 @@ export const attractions = [
     title: "Tranquebar (Tharangambadi)",
     subtitle: "A slice of Denmark in India.",
     description: "Tranquebar, also known as Tharangambadi, is a former Danish colony that is steeped in history. The town's main attraction is the Dansborg Fort, which was built in the 17th century. The town also has a number of old churches and a beautiful beach.",
-    image: "https://images.unsplash.com/photo-1605325228189-09590055106e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "https://images.unsplash.com/photo-1757168896248-356b030fbcbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     alt: "The Dansborg Fort at Tranquebar",
     mapLink: "https://www.google.com/maps/search/?api=1&query=Tranquebar"
   },
@@ -85,7 +85,7 @@ export const attractions = [
     title: "VGP Marine Kingdom",
     subtitle: "India's largest and first walk-through aquarium.",
     description: "VGP Marine Kingdom is a captivating underwater world that is home to a diverse range of marine life. The walk-through aquarium allows you to get up close and personal with sharks, rays, and a variety of other fish. The aquarium also has a number of interactive exhibits that are perfect for all ages.",
-    image: "https://images.unsplash.com/photo-1580295644833-cab6a6d13137?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "https://images.unsplash.com/photo-1707580595926-f5ff2cd9e9f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     alt: "An underwater tunnel at an aquarium",
     mapLink: "https://www.google.com/maps/search/?api=1&query=VGP+Marine+Kingdom"
   },
@@ -103,7 +103,7 @@ export const attractions = [
     title: "Cholamandal Artists' Village",
     subtitle: "A conversation in colour and form.",
     description: "Founded in 1966, this is the largest self-supporting artists' commune in India. It is not merely a gallery, but a cradle of the Madras Movement of Art. The air hums with quiet creation. Observe how the artists use form and material to translate ancient motifs into a modern language. The textures here—from rough canvas to polished bronze—tell their own stories.",
-    image: "https://images.unsplash.com/photo-1552317894-a3d2c91a721e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+    image: "https://images.unsplash.com/photo-1663996986750-9b82b0215bb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     alt: "A bronze sculpture gleaming in soft light at Cholamandal Artists' Village",
     mapLink: "https://www.google.com/maps/search/?api=1&query=Cholamandal+Artists+Village"
   },
@@ -112,7 +112,7 @@ export const attractions = [
     title: "Mahabalipuram",
     subtitle: "Where stones whisper tales of gods and kings.",
     description: "A UNESCO World Heritage site, Mahabalipuram's rock-cut temples and shore temple are a testament to the Pallava dynasty's architectural prowess. The sea breeze carries stories of ancient mariners and mythical creatures. Find a spot near the Shore Temple and watch the waves crash against a backdrop of centuries-old stone.",
-    image: "https://images.unsplash.com/photo-1602086381928-75e8d0e139b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "https://images.unsplash.com/photo-1717480103667-fc55675a9ae4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     alt: "The Shore Temple at Mahabalipuram",
     mapLink: "https://www.google.com/maps/search/?api=1&query=Mahabalipuram"
   },
