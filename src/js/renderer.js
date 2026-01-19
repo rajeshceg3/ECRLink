@@ -4,7 +4,15 @@ import { attractions } from './data.js';
 function createElement(tag, className = '', attributes = {}, textContent = '') {
   const element = document.createElement(tag);
   if (className) element.className = className;
-  Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+  Object.entries(attributes).forEach(([key, value]) => {
+    if (key === 'style' && value && typeof value === 'object') {
+      Object.entries(value).forEach(([styleKey, styleValue]) => {
+        element.style.setProperty(styleKey, styleValue);
+      });
+    } else {
+      element.setAttribute(key, value);
+    }
+  });
   if (textContent) element.textContent = textContent;
   return element;
 }
@@ -55,7 +63,7 @@ export function renderAttractions(containerElement) {
     const section = createElement('section', 'attraction', { id: attraction.id });
 
     const article = createElement('article', 'attraction-card', {
-      style: `transition-delay: ${index * 100}ms`
+      style: { 'transition-delay': `${index * 100}ms` }
     });
 
     // --- Card Content (Interactive Trigger) ---
