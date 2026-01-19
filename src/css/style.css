@@ -89,14 +89,15 @@ body {
 
 .landing-text {
   color: white;
-  font-size: 2.5vw; /* Increased font size */
+  font-size: clamp(1.2rem, 2.5vw, 3rem); /* Responsive font size */
   font-weight: 300; /* Slightly bolder */
   text-align: center;
-  line-height: 1.7; /* Increased line height */
+  line-height: 1.6; /* Adjusted line height */
   letter-spacing: 1px; /* Added letter spacing */
   animation: fadeIn 3s 1s ease-out forwards;
   opacity: 0;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5); /* Added text shadow for depth */
+  padding: 0 20px; /* Added horizontal padding */
 }
 
 @keyframes fadeIn {
