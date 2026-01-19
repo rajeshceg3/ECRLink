@@ -84,6 +84,12 @@ export function initItinerary(addToRhythmButtons) {
       e.preventDefault();
       e.stopPropagation(); // Stop the click from bubbling up to the card
 
+      // Ripple Effect
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+      button.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600); // Clean up after animation
+
       // Update Local State
       if (itinerary.includes(id)) {
         itinerary = itinerary.filter((item) => item !== id);
