@@ -7,60 +7,52 @@
 ---
 
 ## 1. EXECUTIVE SUMMARY (SITREP)
-**STATUS:** MISSION CAPABLE (GREEN) - OPTIMIZED
-**READINESS:** 100%
-**CONCLUSION:** The `ecrlink` repository functions at an ELITE standard.
+**STATUS:** MISSION CAPABLE (AMBER)
+**READINESS:** 85%
+**CONCLUSION:** The `ecrlink` repository functions at a high standard but requires critical tactical interventions to achieve full production readiness.
 
-The target system utilizes a robust, modular ES architecture with full test coverage (8/8 Pass). Critical subsystems (Scroll, State, Rendering) are optimized. Automated accessibility enforcement is ACTIVE.
-
-Recent operations have neutralized the Content Security Policy (CSP) threat and successfully deployed high-fidelity user interaction protocols (Ripple Effect).
+While the architectural foundation is solid, the **User Experience (UX)** is compromised by the lack of an Itinerary Management Interface. Users can "Add" items but cannot "View" them. This is a critical mission failure point.
 
 ---
 
-## 2. TACTICAL ASSESSMENT
+## 2. STRATEGIC IMPLEMENTATION ROADMAP
 
-### 2.1 STRENGTHS (ASSETS)
-*   **Architecture:** Clean separation of concerns (`renderer.js`, `data.js`, `logic`). Low cognitive load for maintenance.
-*   **Resilience:** `try-catch` wrappers on `localStorage` prevent mission aborts on privacy-hardened browsers.
-*   **Defenses:** Automated `axe-core` scans in CI pipeline ensure WCAG compliance.
-*   **Performance:** `IntersectionObserver` and Static Site Generation (Vite) deliver sub-second load times. Resource hints (`preconnect`) now active.
+### PHASE I: OPERATION "OPEN SATCHEL" (IMMEDIATE PRIORITY)
+**Objective:** Establish a functional User Interface for the Itinerary system.
+**Threat Level:** HIGH (UX Critical)
+**Tactics:**
+1.  **Refactor `itinerary.js`:**
+    *   Attach a `click` event listener to the `.itinerary-status` container.
+    *   Implement a "Toast" or "Modal" that lists selected attractions.
+    *   Add controls to "Remove" items directly from this list.
+    *   Add a "Clear All" control.
+2.  **Enhance `renderer.js`:**
+    *   Ensure the modal is rendered dynamically to avoid DOM pollution on load.
+3.  **Verification:**
+    *   Verify accessible focus management (trap focus in modal).
+    *   Verify persistence after edits.
 
-### 2.2 VULNERABILITIES (THREATS)
-*   **None Identified:** All primary threat vectors have been neutralized.
+### PHASE II: OPERATION "LIGHTWEIGHT" (PERFORMANCE)
+**Objective:** Optimize data payload for mobile operatives.
+**Threat Level:** MEDIUM (Performance)
+**Tactics:**
+1.  **Upgrade Data Layer:** Update `data.js` or `renderer.js` to generate `srcset` attributes.
+    *   Example: `w=600` for mobile, `w=1200` for tablet, `w=2000` for desktop.
+    *   Use `<picture>` tag or `img srcset` for art direction if necessary.
+2.  **Skeleton Tuning:** Ensure skeleton aspect ratios match the new responsive images.
 
-### 2.3 OPPORTUNITIES
-*   **Pre-emptive Strike:** Preload "Sanctuary" assets when the user hovers over a card to ensure instant modal rendering.
-*   **Visual Command:** Refine the "Itinerary Status" counter to be more assertive (clearer typography/iconography).
+### PHASE III: OPERATION "IRON SHIELD" (HARDENING)
+**Objective:** Maximize PWA compliance and code safety.
+**Threat Level:** LOW (Maintenance/Polish)
+**Tactics:**
+1.  **iOS Integration:** Add `<meta name="apple-mobile-web-app-capable" content="yes">` to `index.html`.
+2.  **Type Safety:** Introduce JSDoc type annotations to `src/js/*.js` files to enforce strict typing in the IDE.
+3.  **Test Coverage:** Add a Playwright test specifically for opening the Itinerary View and removing an item.
 
 ---
 
-## 3. STRATEGIC IMPLEMENTATION ROADMAP
-
-### PHASE I: SECURITY HARDENING (COMPLETED)
-**Objective:** Resolve CSP conflict without compromising security standards.
-**Status:** **NEUTRALIZED**
-**Tactics:**
-1.  **Refactor:** Modified `renderer.js` to use `element.style.setProperty`, bypassing CSP inline-style restrictions.
-2.  **Verify:** Staggered animations confirmed functional.
-
-### PHASE II: SENSORY AMPLIFICATION (COMPLETED)
-**Objective:** Elevate user satisfaction through high-fidelity micro-interactions.
-**Status:** **DEPLOYED**
-**Tactics:**
-1.  **Feedback Loop:** Implemented "Ripple" animation on "Add to Itinerary" and primary interaction buttons.
-2.  **Sound Discipline:** (Optional) Pending review.
-
-### PHASE III: DEEP OPTIMIZATION (PARTIAL)
-**Objective:** Achieve 100/100 Lighthouse score.
-**Status:** **IN PROGRESS**
-**Tactics:**
-1.  **Asset Logic:** Force WebP/AVIF formats in Unsplash URLs within `data.js`. (Pending)
-2.  **Resource Hints:** Added `<link rel="preconnect">` for Unsplash and Mixkit domains in `index.html`. (**COMPLETED**)
-
----
-
-## 4. MISSION ORDERS
-**Current Priority:** MAINTAIN SUPREMACY.
+## 3. MISSION ORDERS
+**Current Priority:** EXECUTE PHASE I.
 
 **COMMANDER'S SIGN OFF:**
-*System is ready for deployment. Stand down and monitor.*
+*Authorization granted to proceed with UX overhaul. Dismissed.*
