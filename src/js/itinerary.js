@@ -1,9 +1,22 @@
 // --- 4. Itinerary Logic ---
 import { showToast } from './toast.js';
+import { attractions } from './data.js';
 
 export function initItinerary(addToRhythmButtons) {
   let itinerary = [];
   const countDisplay = document.querySelector('.itinerary-count');
+  const statusContainer = document.querySelector('.itinerary-status');
+
+  // Helper: Create Element
+  function createElement(tag, className = '', attributes = {}, textContent = '') {
+    const element = document.createElement(tag);
+    if (className) element.className = className;
+    Object.entries(attributes).forEach(([key, value]) => {
+      element.setAttribute(key, value);
+    });
+    if (textContent) element.textContent = textContent;
+    return element;
+  }
 
   // Helper: Load data from storage
   function loadItinerary() {
@@ -13,6 +26,17 @@ export function initItinerary(addToRhythmButtons) {
       // eslint-disable-next-line no-console
       console.warn('Failed to load itinerary from localStorage:', error);
       itinerary = [];
+    }
+  }
+
+  // Helper: Save data to storage
+  function saveItinerary() {
+    try {
+      localStorage.setItem('itinerary', JSON.stringify(itinerary));
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Failed to save itinerary to localStorage:', error);
+      showToast('Failed to save progress');
     }
   }
 
@@ -34,14 +58,13 @@ export function initItinerary(addToRhythmButtons) {
       countDisplay.textContent = itinerary.length;
 
       // Trigger Pulse Animation
-      const statusContainer = document.querySelector('.itinerary-status');
       if (statusContainer) {
           statusContainer.classList.remove('pulse');
           // Force reflow
           void statusContainer.offsetWidth;
           statusContainer.classList.add('pulse');
 
-          // Remove class after animation to allow re-triggering
+          // Remove class after animation
           setTimeout(() => {
               statusContainer.classList.remove('pulse');
           }, 300);
@@ -60,9 +83,118 @@ export function initItinerary(addToRhythmButtons) {
     });
   }
 
+  // --- Modal Logic ---
+  let modalOverlay = null;
+
+  function renderItineraryModal() {
+    // If modal doesn't exist, create it
+    if (!modalOverlay) {
+      modalOverlay = createElement('div', 'itinerary-modal-overlay');
+
+      const modal = createElement('div', 'itinerary-modal');
+
+      const header = createElement('div', 'itinerary-header');
+      header.appendChild(createElement('h2', '', {}, 'Your Journey'));
+
+      const closeBtn = createElement('button', 'itinerary-close-btn', { 'aria-label': 'Close Itinerary' });
+      closeBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+      closeBtn.addEventListener('click', toggleItinerary);
+      header.appendChild(closeBtn);
+
+      const list = createElement('div', 'itinerary-list');
+
+      modal.appendChild(header);
+      modal.appendChild(list);
+      modalOverlay.appendChild(modal);
+
+      document.body.appendChild(modalOverlay);
+
+      // Close on outside click
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) toggleItinerary();
+      });
+    }
+
+    // Populate List
+    const listContainer = modalOverlay.querySelector('.itinerary-list');
+    listContainer.innerHTML = ''; // Clear current list
+
+    if (itinerary.length === 0) {
+      const emptyState = createElement('div', 'itinerary-empty-state', {}, 'Your path is yet to be chosen.');
+      listContainer.appendChild(emptyState);
+    } else {
+      itinerary.forEach(id => {
+        const itemData = attractions.find(a => a.id === id);
+        if (!itemData) return;
+
+        const itemEl = createElement('div', 'itinerary-item');
+
+        const thumb = createElement('img', 'itinerary-item-thumb', { src: itemData.image, alt: itemData.title });
+
+        const info = createElement('div', 'itinerary-item-info');
+        const title = createElement('div', 'itinerary-item-title', {}, itemData.title);
+        const subtitle = createElement('div', 'itinerary-item-subtitle', {}, itemData.subtitle);
+        info.appendChild(title);
+        info.appendChild(subtitle);
+
+        const removeBtn = createElement('button', 'itinerary-remove-btn', { 'aria-label': `Remove ${itemData.title}` });
+        removeBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>`;
+
+        removeBtn.addEventListener('click', () => {
+          removeFromItinerary(id);
+        });
+
+        itemEl.appendChild(thumb);
+        itemEl.appendChild(info);
+        itemEl.appendChild(removeBtn);
+        listContainer.appendChild(itemEl);
+      });
+    }
+  }
+
+  function toggleItinerary() {
+    if (!modalOverlay) renderItineraryModal(); // Ensure it exists
+
+    // Toggle Logic
+    const isOpen = modalOverlay.classList.contains('open');
+    if (isOpen) {
+      modalOverlay.classList.remove('open');
+      document.body.style.overflow = ''; // Restore scroll
+    } else {
+      renderItineraryModal(); // Re-render content to ensure freshness
+      modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Lock scroll
+    }
+  }
+
+  function removeFromItinerary(id) {
+    itinerary = itinerary.filter(item => item !== id);
+    saveItinerary();
+    updateUI();
+    renderItineraryModal(); // Re-render the list immediately
+    showToast('Removed from Itinerary');
+  }
+
   // --- Initialization ---
   loadItinerary();
   updateUI();
+
+  // --- Event Listener: Itinerary Status Click ---
+  if (statusContainer) {
+      statusContainer.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleItinerary();
+      });
+      // Add keyboard support
+      statusContainer.setAttribute('tabindex', '0');
+      statusContainer.setAttribute('role', 'button');
+      statusContainer.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggleItinerary();
+          }
+      });
+  }
 
   // --- Event Listener: Cross-Tab Synchronization ---
   // If the user updates the itinerary in another tab, this ensures the UI stays in sync.
@@ -70,10 +202,13 @@ export function initItinerary(addToRhythmButtons) {
     if (event.key === 'itinerary') {
       loadItinerary();
       updateUI();
+      if (modalOverlay && modalOverlay.classList.contains('open')) {
+          renderItineraryModal();
+      }
     }
   });
 
-  // --- Click Handlers ---
+  // --- Click Handlers (Add/Remove Buttons) ---
   addToRhythmButtons.forEach((button) => {
     // Find the parent attraction to get the ID
     const card = button.closest('.attraction-card');
@@ -92,24 +227,13 @@ export function initItinerary(addToRhythmButtons) {
 
       // Update Local State
       if (itinerary.includes(id)) {
-        itinerary = itinerary.filter((item) => item !== id);
-        showToast('Removed from Itinerary');
+        removeFromItinerary(id);
       } else {
         itinerary.push(id);
         showToast('Added to Itinerary');
+        saveItinerary();
+        updateUI();
       }
-
-      // Persist to Storage
-      try {
-        localStorage.setItem('itinerary', JSON.stringify(itinerary));
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error('Failed to save itinerary to localStorage:', error);
-        showToast('Failed to save progress');
-      }
-
-      // Update UI (Current Tab)
-      updateUI();
     });
   });
 }
