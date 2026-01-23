@@ -85,6 +85,7 @@ export function initItinerary(addToRhythmButtons) {
 
   // --- Modal Logic ---
   let modalOverlay = null;
+  let lastFocusedElement = null;
 
   function renderItineraryModal() {
     // If modal doesn't exist, create it
@@ -92,9 +93,12 @@ export function initItinerary(addToRhythmButtons) {
       modalOverlay = createElement('div', 'itinerary-modal-overlay');
 
       const modal = createElement('div', 'itinerary-modal');
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-labelledby', 'itinerary-title');
 
       const header = createElement('div', 'itinerary-header');
-      header.appendChild(createElement('h2', '', {}, 'Your Journey'));
+      header.appendChild(createElement('h2', '', { id: 'itinerary-title' }, 'Your Journey'));
 
       const closeBtn = createElement('button', 'itinerary-close-btn', { 'aria-label': 'Close Itinerary' });
       closeBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
@@ -112,6 +116,13 @@ export function initItinerary(addToRhythmButtons) {
       // Close on outside click
       modalOverlay.addEventListener('click', (e) => {
         if (e.target === modalOverlay) toggleItinerary();
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('open')) {
+          toggleItinerary();
+        }
       });
     }
 
@@ -152,6 +163,17 @@ export function initItinerary(addToRhythmButtons) {
     }
   }
 
+  function setInert(state) {
+    const horizonContainer = document.querySelector('.horizon-container');
+    if (horizonContainer) {
+      if (state) {
+        horizonContainer.setAttribute('inert', '');
+      } else {
+        horizonContainer.removeAttribute('inert');
+      }
+    }
+  }
+
   function toggleItinerary() {
     if (!modalOverlay) renderItineraryModal(); // Ensure it exists
 
@@ -160,10 +182,20 @@ export function initItinerary(addToRhythmButtons) {
     if (isOpen) {
       modalOverlay.classList.remove('open');
       document.body.style.overflow = ''; // Restore scroll
+      setInert(false);
+      // Restore focus
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
     } else {
+      lastFocusedElement = document.activeElement;
       renderItineraryModal(); // Re-render content to ensure freshness
       modalOverlay.classList.add('open');
       document.body.style.overflow = 'hidden'; // Lock scroll
+      setInert(true);
+      // Move focus to close button for immediate accessibility
+      const closeBtn = modalOverlay.querySelector('.itinerary-close-btn');
+      if (closeBtn) closeBtn.focus();
     }
   }
 

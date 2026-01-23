@@ -38,6 +38,29 @@ function createSVG(className, elements) {
   return svg;
 }
 
+function generateSrcSet(url) {
+  try {
+    const urlObj = new URL(url);
+    // Ensure we are working with Unsplash to avoid breaking other potential image sources
+    if (!urlObj.hostname.includes('unsplash.com')) return null;
+
+    urlObj.searchParams.set('w', '400');
+    const w400 = urlObj.toString();
+
+    urlObj.searchParams.set('w', '800');
+    const w800 = urlObj.toString();
+
+    urlObj.searchParams.set('w', '1200');
+    const w1200 = urlObj.toString();
+
+    return `${w400} 400w, ${w800} 800w, ${w1200} 1200w`;
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn('Failed to generate srcset:', e);
+    return null;
+  }
+}
+
 export function renderAttractions(containerElement) {
   // Clear existing attractions - safer than innerHTML as we are modifying the DOM tree directly
   while (containerElement.firstChild) {
@@ -81,11 +104,22 @@ export function renderAttractions(containerElement) {
     const skeleton = createElement('div', 'image-skeleton');
     figure.appendChild(skeleton);
 
-    const img = createElement('img', '', {
+    const imgAttrs = {
       src: attraction.image,
       alt: attraction.alt,
       loading: 'lazy'
-    });
+    };
+
+    const srcSet = generateSrcSet(attraction.image);
+    if (srcSet) {
+      imgAttrs.srcset = srcSet;
+      // Responsive sizes:
+      // Mobile: 100vw (minus padding)
+      // Tablet/Desktop: ~40vw (card width)
+      imgAttrs.sizes = '(max-width: 768px) 90vw, 40vw';
+    }
+
+    const img = createElement('img', '', imgAttrs);
 
     // Image Load Handler
     img.onload = () => {
