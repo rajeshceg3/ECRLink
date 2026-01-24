@@ -115,3 +115,38 @@ test('Keyboard navigation opens sanctuary', async ({ page }) => {
 
   await expect(container).not.toHaveClass(/sanctuary-is-open/);
 });
+
+test('Itinerary modal opens and displays added items', async ({ page }) => {
+  await page.goto('/');
+
+  // 1. Add an item
+  const firstCard = page.locator('.attraction-card').first();
+  await firstCard.click();
+  const addToItineraryBtn = page.locator('.sanctuary-actions .add-to-rhythm').first();
+  await addToItineraryBtn.click();
+
+  // Close sanctuary to see the itinerary button
+  const closeSanctuaryBtn = page.locator('.sanctuary-close-button');
+  await closeSanctuaryBtn.click();
+
+  // 2. Open Itinerary Modal
+  const itineraryStatus = page.locator('.itinerary-status');
+  await itineraryStatus.click();
+
+  // 3. Verify Modal Open
+  const modalOverlay = page.locator('.itinerary-modal-overlay');
+  await expect(modalOverlay).toHaveClass(/open/);
+
+  // 4. Verify Item is in list
+  const cardTitle = await page.locator('.card-title h2').first().textContent();
+  const itineraryItem = page.locator('.itinerary-item');
+  await expect(itineraryItem).toContainText(cardTitle);
+
+  // 5. Remove item from modal
+  const removeBtn = page.locator('.itinerary-remove-btn').first();
+  await removeBtn.click();
+
+  // 6. Verify list is empty
+  const emptyState = page.locator('.itinerary-empty-state');
+  await expect(emptyState).toBeVisible();
+});

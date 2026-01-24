@@ -2,6 +2,12 @@
 import { showToast } from './toast.js';
 import { attractions } from './data.js';
 
+/**
+ * Initializes the Itinerary management system.
+ * Handles adding/removing items, persistence to localStorage, and the Itinerary Modal UI.
+ *
+ * @param {NodeListOf<Element>} addToRhythmButtons - The buttons used to toggle items in the itinerary.
+ */
 export function initItinerary(addToRhythmButtons) {
   let itinerary = [];
   const countDisplay = document.querySelector('.itinerary-count');
@@ -213,19 +219,10 @@ export function initItinerary(addToRhythmButtons) {
 
   // --- Event Listener: Itinerary Status Click ---
   if (statusContainer) {
-      statusContainer.addEventListener('click', (e) => {
-          e.preventDefault();
-          toggleItinerary();
-      });
-      // Add keyboard support
-      statusContainer.setAttribute('tabindex', '0');
-      statusContainer.setAttribute('role', 'button');
-      statusContainer.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              toggleItinerary();
-          }
-      });
+    statusContainer.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleItinerary();
+    });
   }
 
   // --- Event Listener: Cross-Tab Synchronization ---

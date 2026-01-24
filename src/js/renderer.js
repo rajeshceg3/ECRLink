@@ -61,6 +61,12 @@ function generateSrcSet(url) {
   }
 }
 
+/**
+ * Renders the attraction cards into the provided container element.
+ * Handles dynamic image loading, responsive srcset generation, and interaction bindings.
+ *
+ * @param {HTMLElement} containerElement - The DOM element where attractions will be rendered.
+ */
 export function renderAttractions(containerElement) {
   // Clear existing attractions - safer than innerHTML as we are modifying the DOM tree directly
   while (containerElement.firstChild) {
