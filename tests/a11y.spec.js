@@ -26,4 +26,21 @@ test.describe('Accessibility (Axe)', () => {
 
     expect(accessibilityScanResults.violations).toEqual([]);
   });
+
+  test('itinerary modal should not have accessibility issues when open', async ({ page }) => {
+    await page.goto('/');
+
+    // Open Itinerary
+    await page.locator('.itinerary-status').click();
+    await expect(page.locator('.itinerary-modal-overlay')).toHaveClass(/open/);
+
+    // Wait for animation
+    await page.waitForTimeout(500);
+
+    const accessibilityScanResults = await new AxeBuilder({ page })
+        .include('.itinerary-modal')
+        .analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
 });
