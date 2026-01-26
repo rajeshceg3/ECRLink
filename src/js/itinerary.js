@@ -24,6 +24,28 @@ export function initItinerary(addToRhythmButtons) {
     return element;
   }
 
+  // Helper: Create SVG
+  function createSVG(className, elements) {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    if (className) svg.setAttribute('class', className);
+    svg.setAttribute('width', '24');
+    svg.setAttribute('height', '24');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '2');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+
+    elements.forEach(({ tag, attrs }) => {
+      const child = document.createElementNS('http://www.w3.org/2000/svg', tag);
+      Object.entries(attrs).forEach(([key, value]) => child.setAttribute(key, value));
+      svg.appendChild(child);
+    });
+
+    return svg;
+  }
+
   // Helper: Load data from storage
   function loadItinerary() {
     try {
@@ -107,7 +129,10 @@ export function initItinerary(addToRhythmButtons) {
       header.appendChild(createElement('h2', '', { id: 'itinerary-title' }, 'Your Journey'));
 
       const closeBtn = createElement('button', 'itinerary-close-btn', { 'aria-label': 'Close Itinerary' });
-      closeBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+      closeBtn.appendChild(createSVG('', [
+        { tag: 'line', attrs: { x1: '18', y1: '6', x2: '6', y2: '18' } },
+        { tag: 'line', attrs: { x1: '6', y1: '6', x2: '18', y2: '18' } }
+      ]));
       closeBtn.addEventListener('click', toggleItinerary);
       header.appendChild(closeBtn);
 
@@ -155,7 +180,16 @@ export function initItinerary(addToRhythmButtons) {
         info.appendChild(subtitle);
 
         const removeBtn = createElement('button', 'itinerary-remove-btn', { 'aria-label': `Remove ${itemData.title}` });
-        removeBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>`;
+        const removeIcon = createSVG('', [
+          { tag: 'polyline', attrs: { points: '3 6 5 6 21 6' } },
+          { tag: 'path', attrs: { d: 'M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2' } }
+        ]);
+        // Override width/height for this specific icon if needed, but 24x24 (default) usually scales down via CSS or is fine.
+        // The original innerHTML had width="20" height="20".
+        removeIcon.setAttribute('width', '20');
+        removeIcon.setAttribute('height', '20');
+
+        removeBtn.appendChild(removeIcon);
 
         removeBtn.addEventListener('click', () => {
           removeFromItinerary(id);
