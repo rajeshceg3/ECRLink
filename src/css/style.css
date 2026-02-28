@@ -158,6 +158,9 @@ body {
   position: relative;
   opacity: 0;
   transform: translateY(30px);
+  will-change: transform, opacity;
+  content-visibility: auto;
+  contain-intrinsic-size: 600px;
   transition:
     opacity 1s ease-out,
     transform 1s ease-out,

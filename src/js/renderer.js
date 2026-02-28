@@ -113,7 +113,8 @@ export function renderAttractions(containerElement) {
     const imgAttrs = {
       src: attraction.image,
       alt: attraction.alt,
-      loading: 'lazy'
+      loading: 'lazy',
+      decoding: 'async'
     };
 
     const srcSet = generateSrcSet(attraction.image);
