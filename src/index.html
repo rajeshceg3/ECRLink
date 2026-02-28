@@ -32,10 +32,15 @@
 
     <title>Horizon | A Journey on the East Coast Road</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://assets.mixkit.co" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="preconnect" href="https://assets.mixkit.co" />
+    <link rel="preload" as="video" href="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5119-large.mp4" type="video/mp4" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap"
       rel="stylesheet"
@@ -51,6 +56,7 @@
           muted
           loop
           playsinline
+          fetchpriority="high"
           class="landing-video"
           src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5119-large.mp4"
           poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
